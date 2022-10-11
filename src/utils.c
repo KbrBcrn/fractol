@@ -67,6 +67,11 @@ void	zoom(t_fractol *bounds, double zoom_size)
 	bounds->max_i = bounds->min_i + zoom_size * height;
 }
 
+/* move:
+*	Moves the view of the fractal by adjusting the complex
+*	number edge values a certain distance in a certain direction.
+*/
+
 void	move(t_fractol *bounds, char dir, double size)
 {
 	double	width;
