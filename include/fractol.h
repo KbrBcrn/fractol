@@ -45,12 +45,12 @@ int		mouse_button(int key, int x, int y, void *param);
 
 char	parse_fractal(char *s);
 void	draw_fractal(t_fractol *b);
-void	zoom(t_fractol *bounds, double zoom_size);
-void	move(t_fractol *bounds, char dir, double size);
+void	zoom(t_fractol *f, double zoom_size);
+void	move(t_fractol *f, char dir, double size);
 int		quit(void);
 void	destroy_all(t_fractol *param);
 
-void	set_color(t_fractol *bounds);
-int		fractal(t_fractol *bounds, double cr, double ci);
+void	set_pixel_color(t_fractol *f);
+int		fractal(t_fractol *f, double cr, double ci);
 
 #endif
