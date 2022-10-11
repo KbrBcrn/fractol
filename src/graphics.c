@@ -22,7 +22,7 @@
 		- GG >> 8   (0x0000GG00)
 		- RR >> 16  (0x00RR0000)
 		- AA >> 24  (0xAA000000)
-
+*/
 static void	set_pixel_color(t_fractol *b, int x, int y, int color)
 {
 	b->buffer[x * 4 + WIDTH * y * 4] = color;
