@@ -18,7 +18,7 @@ void	set_random_color(t_fractol *f)
 
 	i = -1;
 	while (++i <= MAX_ITER)
-		f->color_set[i] = rand() % 16777215;
+		f->color_set[i] = rand() % 16777215 // White;
 	f->color_set[MAX_ITER] = 0;
 }
 
