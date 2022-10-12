@@ -13,10 +13,7 @@
 #include "fractol.h"
 
 /* init_img:
-*	Initializes an MLX image and a color palette. The color palette will
-*	be used to store every shade of color for every iteration number,
-*	and the color of each pixel will be stored in the image, which will
-*	then be displayed in the program window.
+*	Initializes an MLX image 
 */
 
 void	init_image(t_fractol *b)
