@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbeceren <kbeceren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 13:00:46 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/10/07 13:00:49 by kbeceren         ###   ########.fr       */
+/*   Created: 2022/02/06 07:47:44 by jboumal           #+#    #+#             */
+/*   Updated: 2022/10/12 09:54:59 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ int	mandelbrot(double cr, double ci)
 	return (n);
 }
 
-int	fractal(t_fractol *bounds, double cr, double ci)
+int	fractal(t_fractol *f, double cr, double ci)
 {
-	if (bounds->fractal == 'M')
+	if (f->fractal == 'M')
 		return (mandelbrot(cr, ci));
-	if (bounds->fractal == 'B')
+	if (f->fractal == 'B')
 		return (burning_ship(cr, ci));
-	else if (bounds->fractal == 'J')
-		return (julia(cr, ci, bounds->cr, bounds->ci));
+	else if (f->fractal == 'J')
+		return (julia(cr, ci, f->cr, f->ci));
 	return (0);
 }

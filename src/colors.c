@@ -5,24 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbeceren <kbeceren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 13:00:13 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/10/07 13:00:16 by kbeceren         ###   ########.fr       */
+/*   Created: 2022/02/12 12:45:16 by jboumal           #+#    #+#             */
+/*   Updated: 2022/10/12 09:54:37 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	set_random_color(t_fractol *bounds)
+void	set_random_color(t_fractol *f)
 {
 	int	i;
 
 	i = -1;
 	while (++i <= MAX_ITER)
-		bounds->color_set[i] = rand() % 16777215;
-	bounds->color_set[MAX_ITER] = 0;
+		f->color_set[i] = rand() % 16777215;
+	f->color_set[MAX_ITER] = 0;
 }
 
-void	set_mono_color(t_fractol *bounds, int r, int g, int b)
+void	set_mono_color(t_fractol *f, int r, int g, int b)
 {
 	int	i;
 	int	n;
@@ -31,18 +31,18 @@ void	set_mono_color(t_fractol *bounds, int r, int g, int b)
 	while (++i <= MAX_ITER)
 	{
 		n = (i * 255 / (MAX_ITER));
-		bounds->color_set[i] = 0;
+		f->color_set[i] = 0;
 		if (b)
-			bounds->color_set[i] += n;
+			f->color_set[i] += n;
 		if (g)
-			bounds->color_set[i] += 256 * n;
+			f->color_set[i] += 256 * n;
 		if (r)
-			bounds->color_set[i] += 256 * 256 * n;
+			f->color_set[i] += 256 * 256 * n;
 	}
-	bounds->color_set[MAX_ITER] = 0;
+	f->color_set[MAX_ITER] = 0;
 }
 
-void	set_rainbow_color(t_fractol *bounds)
+void	set_rainbow_color(t_fractol *f)
 {
 	int	i;
 	int	n;
@@ -52,49 +52,49 @@ void	set_rainbow_color(t_fractol *bounds)
 	{
 		n = 1535 - (i * 1535 / (MAX_ITER));
 		if (n < 256)
-			bounds->color_set[i] = 256 * 256 * 255 + n % 256;
+			f->color_set[i] = 256 * 256 * 255 + n % 256;
 		else if (n < 512)
-			bounds->color_set[i] = 256 * 256 * (255 - (n % 256)) + 255;
+			f->color_set[i] = 256 * 256 * (255 - (n % 256)) + 255;
 		else if (n < 768)
-			bounds->color_set[i] = 256 * (n % 256) + 255;
+			f->color_set[i] = 256 * (n % 256) + 255;
 		else if (n < 1024)
-			bounds->color_set[i] = 256 * 255 + (255 - (n % 256));
+			f->color_set[i] = 256 * 255 + (255 - (n % 256));
 		else if (n < 1280)
-			bounds->color_set[i] = 256 * 256 * (n % 256) + 256 * 255;
+			f->color_set[i] = 256 * 256 * (n % 256) + 256 * 255;
 		else
-			bounds->color_set[i] = 256 * 256 * 255 + 256 * (255 - (n % 256));
+			f->color_set[i] = 256 * 256 * 255 + 256 * (255 - (n % 256));
 	}
-	bounds->color_set[MAX_ITER] = 0;
+	f->color_set[MAX_ITER] = 0;
 }
 
-void	set_shades_color(t_fractol *bounds, int color[4], int n)
+void	set_shades_color(t_fractol *f, int color[4], int n)
 {
 	int	i;
 
 	i = -1;
 	while (++i <= MAX_ITER)
 	{
-		bounds->color_set[i] = color[i % n];
+		f->color_set[i] = color[i % n];
 	}
-	bounds->color_set[MAX_ITER] = 0;
+	f->color_set[MAX_ITER] = 0;
 }
 
-void	set_color(t_fractol *bounds)
+void	set_color(t_fractol *f)
 {
 	int	color;
 
-	color = bounds->color;
+	color = f->color;
 	if (color == 0)
-		set_random_color(bounds);
+		set_random_color(f);
 	else if (color == 1)
-		set_mono_color(bounds, 1, 1, 1);
+		set_mono_color(f, 1, 1, 1);
 	else if (color == 2)
-		set_rainbow_color(bounds);
+		set_rainbow_color(f);
 	else if (color == 3)
-		set_mono_color(bounds, 0, 1, 1);
+		set_mono_color(f, 0, 1, 1);
 	else if (color == 4)
 	{
-		set_shades_color(bounds, (int [33]){0x4c4f3d, 0x586647, 0xada898,
+		set_shades_color(f, (int [33]){0x4c4f3d, 0x586647, 0xada898,
 			0x727760, 0x303425, 0xf7f4e8, 0x39462d, 0xdde3ca, 0x909e7c,
 			0xa47a7c, 0xd6cbc2, 0x222d19, 0x1e2016, 0x93928c, 0x5b5b54,
 			0x3b3b34, 0xbfc9ab, 0x6d5954, 0x8d8171, 0x7c9c6b, 0x6e474c,

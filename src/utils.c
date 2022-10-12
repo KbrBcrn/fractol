@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbeceren <kbeceren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 13:00:21 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/10/07 13:30:46 by kbeceren         ###   ########.fr       */
+/*   Created: 2022/03/15 08:50:38 by jboumal           #+#    #+#             */
+/*   Updated: 2022/10/12 09:58:39 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	destroy_all(t_fractol *bounds)
+void	destroy_all(t_fractol *f)
 {
-	mlx_destroy_image(bounds->mlx, bounds->img);
-	mlx_destroy_window(bounds->mlx, bounds->win);
-	free(bounds->mlx);
-	free(bounds);
+	mlx_destroy_image(f->mlx, f->img);
+	mlx_destroy_window(f->mlx, f->win);
+	free(f->mlx);
+	free(f);
 }
 
 char	parse_fractal(char *s)
@@ -44,7 +44,6 @@ int	quit(void)
 	write (1, "[B] Burning ships\n", 19);
 	return (0);
 }
-
 /* zoom:
 *	Zooms the view of the fractal in or out by adjusting
 *	the complex number edge values by a zoom multiplier.
@@ -54,17 +53,17 @@ int	quit(void)
 *	zoom in, if it is big, like 2.0, it will zoom out.
 */
 
-void	zoom(t_fractol *bounds, double zoom_size)
+void	zoom(t_fractol *f, double zoom_size)
 {
 	double	width;
 	double	height;
 
-	width = bounds->max_r - bounds->min_r;
-	height = bounds->max_i - bounds->min_i;
-	bounds->min_r = bounds->min_r + (width - zoom_size * width) / 2;
-	bounds->max_r = bounds->min_r + zoom_size * width;
-	bounds->min_i = bounds->min_i + (height - zoom_size * height) / 2;
-	bounds->max_i = bounds->min_i + zoom_size * height;
+	width = f->max_r - f->min_r;
+	height = f->max_i - f->min_i;
+	f->min_r = f->min_r + (width - zoom_size * width) / 2;
+	f->max_r = f->min_r + zoom_size * width;
+	f->min_i = f->min_i + (height - zoom_size * height) / 2;
+	f->max_i = f->min_i + zoom_size * height;
 }
 
 /* move:
@@ -72,31 +71,31 @@ void	zoom(t_fractol *bounds, double zoom_size)
 *	number edge values a certain distance in a certain direction.
 */
 
-void	move(t_fractol *bounds, char dir, double size)
+void	move(t_fractol *f, char dir, double size)
 {
 	double	width;
 	double	height;
 
-	width = bounds->max_r - bounds->min_r;
-	height = bounds->max_i - bounds->min_i;
+	width = f->max_r - f->min_r;
+	height = f->max_i - f->min_i;
 	if (dir == 'R')
 	{
-		bounds->min_r += width * size;
-		bounds->max_r += width * size;
+		f->min_r += width * size;
+		f->max_r += width * size;
 	}
 	else if (dir == 'L')
 	{
-		bounds->min_r -= width * size;
-		bounds->max_r -= width * size;
+		f->min_r -= width * size;
+		f->max_r -= width * size;
 	}
 	else if (dir == 'D')
 	{
-		bounds->min_i += height * size;
-		bounds->max_i += height * size;
+		f->min_i += height * size;
+		f->max_i += height * size;
 	}
 	else if (dir == 'U')
 	{
-		bounds->min_i -= height * size;
-		bounds->max_i -= height * size;
+		f->min_i -= height * size;
+		f->max_i -= height * size;
 	}
 }

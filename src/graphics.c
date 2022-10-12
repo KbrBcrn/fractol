@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbeceren <kbeceren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 13:00:34 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/10/07 13:00:36 by kbeceren         ###   ########.fr       */
+/*   Created: 2022/02/06 18:55:13 by jboumal           #+#    #+#             */
+/*   Updated: 2022/10/12 09:57:13 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	set_pixel_color(t_fractol *b, int x, int y, int color)
 	b->buffer[x * 4 + WIDTH * y * 4 + 2] = color >> 16;
 	b->buffer[x * 4 + WIDTH * y * 4 + 3] = color >> 24;
 }
-
 /* draw_fractal:
 *	Iterates through each pixel of the window, translates the pixel's
 *	coordinates into a complex number to be able to calculate if that number
@@ -41,12 +40,12 @@ static void	set_pixel_color(t_fractol *b, int x, int y, int color)
 *	this function displays the MLX image to the window.
 */
 
-void	draw_fractal(t_fractol *b)
+void draw_fractal(t_fractol *b)
 {
-	int		x;
-	int		y;
-	double	cr;
-	double	ci;
+	int x;
+	int y;
+	double cr;
+	double ci;
 
 	x = 0;
 	while (x < WIDTH)
@@ -56,7 +55,7 @@ void	draw_fractal(t_fractol *b)
 		{
 			cr = b->min_r + ((double)x / WIDTH) * (b->max_r - b->min_r);
 			ci = b->min_i + ((double)y / HEIGHT) * (b->max_i - b->min_i);
-			add_pixel(b, x, y, b->color_set[fractal(b, cr, ci)]);
+			set_pixel_color(b, x, y, b->color_set[fractal(b, cr, ci)]);
 			y++;
 		}
 		x++;
