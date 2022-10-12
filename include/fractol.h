@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbeceren <kbeceren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 13:01:38 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/10/12 09:57:45 by kbeceren         ###   ########.fr       */
+/*   Created: 2022/10/12 10:07:30 by kbeceren          #+#    #+#             */
+/*   Updated: 2022/10/12 10:07:36 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 # include <unistd.h>
 # define WIDTH 1000
 # define HEIGHT 1200
-# define MAX_ITER 80 //If we didn't define a maximum iteration, we'd be calculating forever
+# define MAX_ITER 80
 
 typedef struct s_fractol
 {
-	double	min_r; // Minimum value of real axis
-	double	max_r; // Maximum value of real axis
-	double	min_i; // Minimum value of imaginary axis
-	double	max_i; // Maximum value of imaginary axis
+	double	min_r;
+	double	max_r;
+	double	min_i;
+	double	max_i;
 	char	fractal;
-	void	*mlx;  // Pointer to mlx
-	void	*win;  // Pointer to window
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*buffer;
 	double	cr;
