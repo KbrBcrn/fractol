@@ -71,7 +71,8 @@ int	main(int argc, char **argv)
 	int			dynamic;
 
 	dynamic = 1;
-	if (argc == 1 || argc >= 4)
+	if (argc == 1 || argc >= 4) // if no parameter is provided or if the parameter is invalid,
+				    // the program displays a list of available parameters and exits properly. 
 		return (quit());
 	if (argc >= 2)
 		fract = parse_fractal(argv[1]);
