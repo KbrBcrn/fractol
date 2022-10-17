@@ -37,10 +37,10 @@ void	init_image(t_fractol *b)
 
 void	init(t_fractol *f, char fract)
 {
-	f->min_r = -1;
+	f->min_r = -2;
 	f->max_r = 1;
-	f->min_i = -1.0 * HEIGHT / WIDTH;
-	f->max_i = 1.0 * HEIGHT / WIDTH;
+	f->min_i = -1.5;
+	f->max_i = f->min_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
 	f->fractal = fract;
 	f->mlx = mlx_init();
 	if (!f->mlx)
