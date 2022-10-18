@@ -27,7 +27,7 @@ CFLAGS		= -Wall -Wextra -Werror -Iinclude -Ilibft -Iminilibx
 $(NAME):		$(OBJS)
 				$(MAKE) -C libft	
 				$(MAKE) -C minilibx
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) libft/libft.a minilibx/libmlx.a -framework OpenGL -framework AppKit
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) libft/libft.a minilibx/libmlx.a -framework OpenGL -framework AppKit //To link with the required internal macOS API:
 all:			$(NAME)
 clean:
 				${RM} ${OBJS}
