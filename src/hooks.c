@@ -76,6 +76,17 @@ int	deal_key(int key, void *param)
 	return (0);
 }
 
+/* mouse_event:
+*	Handles events from the mouse:
+*		- Mouse wheel: zoom
+*		- Left click: Julia shift
+*	This function is registered to an MLX hook and will
+*	automatically be called when the user does anything inside the
+*	program window with the mouse.
+*	If a valid event is detected, settings are adjusted and the fractal
+*	gets redrawn.
+*/
+
 int	mouse_button(int key, int x, int y, void *param)
 {
 	t_fractol	*f;
