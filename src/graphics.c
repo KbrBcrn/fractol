@@ -38,6 +38,15 @@ static void	set_pixel_color(t_fractol *b, int x, int y, int color)
 	b->buffer[x * 4 + WIDTH * y * 4 + 3] = color >> 24;
 }
 
+/* Iterates through each pixel of the window, translates the pixel's
+*	coordinates into a complex number to be able to calculate if that number
+*	is part of the fractal set or not.
+*	The number of iterations that complex number goes through before being
+*	rejected from the fractal set determines which color is applied to the pixel.
+*	Once all pixels have been assessed and added to the MLX image,
+*	this function displays the MLX image to the window.
+*/
+
 void	draw_fractal(t_fractol *b)
 {
 	int		x;
