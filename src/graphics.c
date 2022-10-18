@@ -16,7 +16,7 @@
 the postition of the pixel you want on the char pointer,
 then change the 3 first chars according to the color you want to get.
 */
-
+// To calculate where to write
 static void	set_pixel_color(t_fractol *b, int x, int y, int color)
 {
 	b->buffer[x * 4 + WIDTH * y * 4] = color;
