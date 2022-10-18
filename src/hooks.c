@@ -79,7 +79,6 @@ int	deal_key(int key, void *param)
 /* mouse_event:
 *	Handles events from the mouse:
 *		- Mouse wheel: zoom
-*		- Left click: Julia shift
 *	This function is registered to an MLX hook and will
 *	automatically be called when the user does anything inside the
 *	program window with the mouse.
