@@ -17,6 +17,19 @@ the postition of the pixel you want on the char pointer,
 then change the 3 first chars according to the color you want to get.
 */
 // To calculate where to write
+
+/* set_pixel_color:
+	Add a color to one pixel of the MLX image map.
+	The MLX image is composed of 32 bits per pixel.
+	Color ints are stored from right to left, here, and are in
+	the form of 0xAARRGGBB. 8 bits encode each color component,
+	Alpha (Transparency), Red, Green and Blue.
+	Bit shifting:
+		- BB >> 0   (0x000000BB)
+		- GG >> 8   (0x0000GG00)
+		- RR >> 16  (0x00RR0000)
+		- AA >> 24  (0xAA000000)
+*/
 static void	set_pixel_color(t_fractol *b, int x, int y, int color)
 {
 	b->buffer[x * 4 + WIDTH * y * 4] = color;
