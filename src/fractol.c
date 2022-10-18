@@ -31,7 +31,7 @@ void	init_image(t_fractol *b)
 		free(b);
 		exit(EXIT_FAILURE);
 	}
-	buffer = mlx_get_data_addr(b->img, &pixel_bits, &line_bytes, &endian);
+	buffer = mlx_get_data_addr(b->img, &pixel_bits, &line_bytes, &endian); // get the memory address off image
 	b->buffer = buffer;
 }
 
@@ -42,13 +42,15 @@ void	init(t_fractol *f, char fract)
 	f->min_i = -1.5;
 	f->max_i = f->min_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
 	f->fractal = fract;
-	f->mlx = mlx_init();
+	f->mlx = mlx_init(); // This will establish a connection to the correct graphical system 
+			    // and will return a void * which holds the location of our current MLX instance. 
 	if (!f->mlx)
 	{
 		free(f);
 		exit(EXIT_FAILURE);
 	}
-	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fractol");
+	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fractol"); // mlx_new_window function, which will return a pointer 
+								  // to the window we have just created.
 	if (!f->win)
 	{
 		free(f->mlx);
