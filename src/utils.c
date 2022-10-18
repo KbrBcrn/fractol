@@ -45,6 +45,15 @@ int	quit(void)
 	return (0);
 }
 
+/* zoom:
+*	Zooms the view of the fractal in or out by adjusting
+*	the complex number edge values by a zoom multiplier.
+*	The fractal can then be generated again at a different resolution,
+*	giving the appearance of zooming in or out.
+*	If the zoom multiplier is small, like 0.5, the view will
+*	zoom in, if it is big, like 2.0, it will zoom out.
+*/
+
 void	zoom(t_fractol *f, double zoom_size)
 {
 	double	width;
@@ -57,6 +66,11 @@ void	zoom(t_fractol *f, double zoom_size)
 	f->min_i = f->min_i + (height - zoom_size * height) / 2;
 	f->max_i = f->min_i + zoom_size * height;
 }
+
+/* move:
+*	Moves the view of the fractal by adjusting the complex
+*	number edge values a certain distance in a certain direction.
+*/
 
 void	move(t_fractol *f, char dir, double size)
 {
