@@ -45,5 +45,5 @@ void	draw_fractal(t_fractol *b)
 		}
 		x++;
 	}
-	mlx_put_image_to_window(b->mlx, b->win, b->img, 0, 0);
+	mlx_put_image_to_window(b->mlx, b->win, b->img, 0, 0); // to push images to the window
 }
