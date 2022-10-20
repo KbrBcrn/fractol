@@ -22,7 +22,7 @@ void	set_random_color(t_fractol *f)
 	f->color_set[MAX_ITER] = 0;
 }
 
-void	set_mono_color(t_fractol *f, int r, int g, int b)
+void	set_mono_color(t_fractol *f, int r, int g, int b) // Monochromatic color is a color scheme made up of different forms of one color
 {
 	int	i;
 	int	n;
