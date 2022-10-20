@@ -30,7 +30,7 @@ void	set_mono_color(t_fractol *f, int r, int g, int b) // Monochromatic color is
 	i = -1;
 	while (++i <= MAX_ITER)
 	{
-		n = (i * 255 / (MAX_ITER));
+		n = (i * 255 / (MAX_ITER)); // the amount of each primary color (red, green, and blue) is specified as a value from 0 to 255.
 		f->color_set[i] = 0;
 		if (b)
 			f->color_set[i] += n;
